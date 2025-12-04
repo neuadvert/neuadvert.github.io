@@ -1,283 +1,280 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>NEUadvert – AI Marketing & Automation</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #f5f7ff;
-            color: #222;
-        }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>NEUadvert — AI Marketing & Creative</title>
 
-        /* HEADER */
-        header {
-            background: #5a3fe8;
-            color: white;
-            padding: 20px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        header h1 { margin: 0; font-size: 24px; letter-spacing: 1px; }
+  <!-- Google font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-        nav a {
-            color: white;
-            margin-left: 20px;
-            text-decoration: none;
-            font-weight: bold;
-        }
+  <style>
+    :root{
+      --bg: #ffffff;
+      --card: #ffffff;
+      --muted: #6b7280;
+      --accent: #3b82f6; /* soft blue accent */
+      --accent-2: #06b6d4;
+      --radius: 14px;
+      --maxw: 1100px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;background:var(--bg);color:#0f1724;-webkit-font-smoothing:antialiased}
+    a{color:var(--accent);text-decoration:none}
+    img{display:block;max-width:100%;height:auto;border-radius:8px}
 
-        /* HERO */
-        .hero {
-            display: flex;
-            flex-wrap: wrap;
-            padding: 50px 40px;
-            background: white;
-        }
-        .hero-text {
-            flex: 1;
-            padding-right: 20px;
-        }
-        .hero-text h2 {
-            font-size: 38px;
-            color: #222;
-        }
-        .hero-text p {
-            color: #444;
-            font-size: 17px;
-            line-height: 1.6;
-        }
-        .hero button {
-            background: #5a3fe8;
-            color: white;
-            padding: 12px 24px;
-            border: none;
-            border-radius: 6px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-        .hero-img {
-            flex: 1;
-            text-align: center;
-        }
-        .hero-img img {
-            width: 100%;
-            max-width: 420px;
-        }
+    /* layout container */
+    .wrap{max-width:var(--maxw);margin:0 auto;padding:28px}
 
-        /* SERVICES */
-        .section-title {
-            text-align: center;
-            padding: 50px 10px 10px;
-            font-size: 28px;
-            font-weight: bold;
-            color: #222;
-        }
-        .services {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            padding: 20px;
-            gap: 20px;
-        }
-        .service-box {
-            background: white;
-            width: 280px;
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            transition: 0.3s;
-        }
-        .service-box:hover {
-            transform: translateY(-5px);
-        }
-        .service-box h3 {
-            margin: 0;
-            color: #5a3fe8;
-        }
-        .service-box p {
-            color: #555;
-            line-height: 1.5;
-        }
+    /* header */
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{
+      width:48px;height:48px;border-radius:12px;
+      display:flex;align-items:center;justify-content:center;color:white;font-weight:700;
+      background:linear-gradient(135deg,var(--accent),var(--accent-2));
+      font-size:20px;
+    }
+    nav{display:flex;gap:18px;align-items:center}
+    .nav-link{color:var(--muted);font-weight:600;font-size:14px}
+    .cta{
+      background:linear-gradient(90deg,var(--accent),var(--accent-2));
+      color:white;padding:10px 14px;border-radius:10px;border:0;font-weight:700;
+      box-shadow:0 6px 18px rgba(59,130,246,0.12);cursor:pointer;
+    }
 
-        /* ABOUT */
-        .about {
-            padding: 40px;
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-        }
-        .about-text {
-            flex: 1;
-            min-width: 280px;
-        }
-        .about-text h2 {
-            color: #222;
-            font-size: 32px;
-        }
-        .about-text p {
-            color: #444;
-            font-size: 17px;
-            line-height: 1.7;
-        }
-        .about-img {
-            flex: 1;
-            min-width: 280px;
-            text-align: center;
-        }
-        .about-img img {
-            width: 100%;
-            max-width: 420px;
-        }
+    /* HERO */
+    .hero{
+      display:grid;
+      grid-template-columns:1fr 420px;
+      gap:28px;
+      align-items:center;
+      padding:36px 0;
+    }
+    .hero-left h1{font-size:36px;margin:0 0 12px;line-height:1.02}
+    .hero-left p{margin:0 0 18px;color:var(--muted);font-size:16px}
+    .hero-actions{display:flex;gap:12px;align-items:center}
+    .ghost{border:1px solid rgba(15,23,36,0.06);padding:10px 12px;border-radius:10px;background:white;color:var(--muted);font-weight:600}
 
-        /* FEATURES */
-        .features {
-            background: #e9e6ff;
-            padding: 40px 20px;
-        }
-        .feature-list {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-        }
-        .feature-box {
-            background: white;
-            width: 260px;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-        }
+    /* card (image + stats) */
+    .hero-card{background:#fbfdff;border-radius:16px;padding:18px;box-shadow:0 8px 30px rgba(15,23,36,0.04);border:1px solid rgba(15,23,36,0.04)}
+    .clients{display:flex;gap:10px;align-items:center;margin-top:12px}
+    .client-avatar{width:44px;height:44px;border-radius:10px;overflow:hidden}
 
-        /* CONTACT */
-        .contact {
-            padding: 50px 40px;
-            background: white;
-        }
-        .contact h2 {
-            font-size: 30px;
-            color: #222;
-        }
-        .contact p {
-            font-size: 17px;
-        }
+    /* SERVICES */
+    #services{padding:26px 0}
+    .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .service{
+      background:white;border-radius:12px;padding:20px;border:1px solid rgba(15,23,36,0.04);
+      transition:transform .28s ease, box-shadow .28s ease;
+    }
+    .service:hover{transform:translateY(-6px);box-shadow:0 16px 30px rgba(15,23,36,0.06)}
+    .service h3{margin:6px 0 8px;font-size:18px}
+    .service p{margin:0;color:var(--muted);font-size:14px}
 
-        /* FOOTER */
-        footer {
-            text-align: center;
-            padding: 20px;
-            background: #5a3fe8;
-            color: white;
-            margin-top: 20px;
-        }
+    /* ABOUT */
+    #about{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;padding:26px 0}
+    .about .eyebrow{font-weight:700;color:var(--accent);font-size:13px;margin-bottom:8px}
+    .about h2{margin:0 0 12px;font-size:28px}
+    .about p{margin:0;color:var(--muted);line-height:1.6}
 
-        /* MOBILE */
-        @media (max-width: 768px) {
-            .hero, .about { flex-direction: column; }
-            header { flex-direction: column; text-align: center; }
-            nav a { margin: 10px; display: inline-block; }
-        }
-    </style>
+    /* FEATURES */
+    #features{padding:26px 0}
+    .features-grid{display:flex;gap:14px;flex-wrap:wrap}
+    .feature{flex:1 1 220px;padding:18px;border-radius:12px;background:linear-gradient(180deg,#ffffff,#fbfdff);border:1px solid rgba(15,23,36,0.03)}
+    .feature h4{margin:0 0 6px;font-size:16px}
+    .feature p{margin:0;color:var(--muted);font-size:14px}
+
+    /* CONTACT */
+    #contact{padding:26px 0}
+    .contact-wrap{display:grid;grid-template-columns:1fr 420px;gap:18px;align-items:start}
+    .contact-card{background:white;padding:20px;border-radius:12px;border:1px solid rgba(15,23,36,0.04)}
+    .contact-card h3{margin:0 0 8px}
+    .contact-card p{margin:0;color:var(--muted)}
+
+    form{display:grid;gap:10px}
+    input,textarea{width:100%;padding:12px;border-radius:10px;border:1px solid rgba(15,23,36,0.06);font-size:14px}
+    button[type="submit"]{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:white;padding:12px;border-radius:10px;border:0;font-weight:700;cursor:pointer}
+
+    /* footer */
+    footer{padding:24px 0;color:var(--muted);font-size:14px;border-top:1px solid rgba(15,23,36,0.04);margin-top:20px}
+
+    /* subtle entry animations */
+    .fade{opacity:0;transform:translateY(12px);transition:all .6s cubic-bezier(.22,.9,.34,1)}
+    .show{opacity:1;transform:none}
+
+    /* responsive */
+    @media (max-width:980px){
+      .hero, #about, .contact-wrap{grid-template-columns:1fr}
+      .services-grid{grid-template-columns:repeat(2,1fr)}
+      header{padding-bottom:12px}
+      .nav-link{display:none}
+    }
+    @media (max-width:560px){
+      .services-grid{grid-template-columns:1fr}
+      .brand .text{display:none}
+      .wrap{padding:18px}
+      .logo{width:44px;height:44px}
+    }
+
+    /* small helper */
+    .muted{color:var(--muted)}
+    .center{text-align:center}
+  </style>
 </head>
-
 <body>
+  <div class="wrap">
 
-<header>
-    <h1>NEUadvert</h1>
-    <nav>
-        <a href="#home">Home</a>
-        <a href="#services">Services</a>
-        <a href="#about">About</a>
-        <a href="#features">Features</a>
-        <a href="#contact">Contact</a>
-    </nav>
-</header>
+    <!-- header -->
+    <header>
+      <div class="brand" aria-label="NEUadvert brand">
+        <div class="logo" aria-hidden="true">N</div>
+        <div class="text">
+          <div style="font-weight:700">NEUadvert</div>
+          <div style="font-size:13px;color:var(--muted)">AI • Creative • Growth</div>
+        </div>
+      </div>
 
-<!-- HERO -->
-<section class="hero" id="home">
-    <div class="hero-text">
-        <h2>Make The Easiest Digital Solution For You</h2>
-        <p>
-            NEUadvert helps businesses grow using AI-powered marketing, automation,
-            branding, and creative digital tools. We make modern advertising simple,
-            fast, and affordable.
-        </p>
-        <button>Get Started</button>
-    </div>
+      <nav>
+        <a class="nav-link" href="#services">Services</a>
+        <a class="nav-link" href="#about">About</a>
+        <a class="nav-link" href="#features">Features</a>
+        <a class="nav-link" href="#contact">Contact</a>
+        <button class="cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get Started</button>
+      </nav>
+    </header>
 
-    <div class="hero-img">
-        <img src="https://i.imgur.com/6YVq9PZ.png" alt="AI Marketing" />
-    </div>
-</section>
+    <!-- HERO -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-left">
+        <div class="kpi muted" style="font-weight:700;font-size:13px;margin-bottom:10px">NEUadvert — Clean & Minimal</div>
+        <h1 id="hero-title">Simple marketing that actually works</h1>
+        <p class="muted">We combine AI, creative systems and performance marketing to design campaigns and products that scale. Fast launches, clear pricing, and results you can measure.</p>
 
-<!-- SERVICES -->
-<h2 class="section-title" id="services">Our Services</h2>
-<div class="services">
-    <div class="service-box">
-        <h3>AI Digital Marketing</h3>
-        <p>Smart marketing strategies powered by artificial intelligence.</p>
-    </div>
+        <div class="hero-actions" style="margin-top:18px">
+          <button class="cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Book a call</button>
+          <a class="ghost" href="#about" style="display:inline-flex;align-items:center;gap:10px">Learn more</a>
+        </div>
 
-    <div class="service-box">
-        <h3>Branding & Design</h3>
-        <p>Professional brand identity, graphics, and content creation.</p>
-    </div>
+        <div class="clients" aria-hidden="true" style="margin-top:18px">
+          <div style="font-size:13px;color:var(--muted)">Trusted by</div>
+          <div style="display:flex;gap:8px;margin-left:8px">
+            <div class="client-avatar"><img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=120&q=60" alt="client 1"></div>
+            <div class="client-avatar"><img src="https://images.unsplash.com/photo-1543269664-9e6b3b8c4f9b?auto=format&fit=crop&w=120&q=60" alt="client 2"></div>
+            <div class="client-avatar"><img src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?auto=format&fit=crop&w=120&q=60" alt="client 3"></div>
+          </div>
+        </div>
+      </div>
 
-    <div class="service-box">
-        <h3>Automation Tools</h3>
-        <p>Automated workflows that save time and increase productivity.</p>
-    </div>
+      <div class="hero-card" aria-hidden="true">
+        <img src="https://images.unsplash.com/photo-1557800636-894a64c1696f?auto=format&fit=crop&w=900&q=80" alt="NEUadvert hero image" style="border-radius:12px;margin-bottom:12px">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+          <div>
+            <div style="font-size:13px;color:var(--muted)">Latest</div>
+            <div style="font-weight:700">NEU-SHIFT Launch</div>
+            <div style="font-size:13px;color:var(--muted);margin-top:6px">Modular creatives + OOH + digital</div>
+          </div>
+          <div style="text-align:right">
+            <div style="font-weight:700;font-size:20px">+42%</div>
+            <div style="font-size:12px;color:var(--muted)">Avg conversions</div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <div class="service-box">
-        <h3>Website Development</h3>
-        <p>Modern, fast websites with AI integrated features.</p>
-    </div>
-</div>
+    <!-- SERVICES -->
+    <section id="services">
+      <h2 class="center" style="margin:8px 0 6px">Our Services</h2>
+      <p class="center muted" style="margin:0 0 18px">Modular, fast and focused on results.</p>
 
-<!-- ABOUT -->
-<section class="about" id="about">
-    <div class="about-text">
-        <h2>About NEUadvert</h2>
-        <p>
-            NEUadvert is a modern digital agency focused on AI innovation.  
-            From branding to automation, we help businesses create, grow,  
-            and scale using powerful, futuristic technology.
-        </p>
-    </div>
+      <div class="services-grid fade" id="servicesGrid">
+        <div class="service">
+          <h3>AI Digital Marketing</h3>
+          <p>Automated ad creation and optimization for social & search. Fast setup and measurable results.</p>
+        </div>
 
-    <div class="about-img">
-        <img src="https://i.imgur.com/3voZ0EF.png" alt="About Us" />
-    </div>
-</section>
+        <div class="service">
+          <h3>Brand & Design</h3>
+          <p>Identity, product visuals and campaign art direction with clean minimal aesthetics.</p>
+        </div>
 
-<!-- FEATURES -->
-<section class="features" id="features">
-    <h2 class="section-title">Why Choose Us</h2>
+        <div class="service">
+          <h3>Website & Landing Pages</h3>
+          <p>Fast responsive pages (GitHub Pages ready) built for conversions and speed.</p>
+        </div>
 
-    <div class="feature-list">
-        <div class="feature-box">✔️ AI-Powered Solutions</div>
-        <div class="feature-box">✔️ Affordable Pricing</div>
-        <div class="feature-box">✔️ Fast Delivery</div>
-        <div class="feature-box">✔️ Professional Designs</div>
-    </div>
-</section>
+        <div class="service">
+          <h3>Automation & Tools</h3>
+          <p>Custom workflows and AI tools to automate marketing tasks and saving time.</p>
+        </div>
 
-<!-- CONTACT -->
-<section class="contact" id="contact">
-    <h2>Contact Us</h2>
-    <p><strong>Email:</strong> neuadvert@gmail.com</p>
-    <p><strong>Phone:</strong> +27 65 000 0000</p>
-    <p><strong>Location:</strong> South Africa</p>
-</section>
+        <div class="service">
+          <h3>Performance Ads</h3>
+          <p>Data-driven campaigns with A/B testing and weekly reporting for clarity.</p>
+        </div>
 
-<footer>
-    © 2025 NEUadvert. All Rights Reserved.
-</footer>
+        <div class="service">
+          <h3>Consult & Strategy</h3>
+          <p>Brand strategy and creative roadmaps focused on growth and long-term impact.</p>
+        </div>
+      </div>
+    </section>
 
-</body>
-</html>
+    <!-- ABOUT -->
+    <section id="about" class="about">
+      <div>
+        <div class="eyebrow">Who we are</div>
+        <h2>NEUadvert — modern marketing with human roots</h2>
+        <p class="muted">We merge cultural rhythm and city movement with modern marketing technology. Based in KwaZulu-Natal, we design modular creative systems that scale from local drops to global launches.</p>
+
+        <div style="display:flex;gap:10px;margin-top:18px;flex-wrap:wrap">
+          <div style="background:white;border-radius:10px;padding:12px;border:1px solid rgba(15,23,36,0.04)">
+            <strong>NEU-SHIFT</strong><div style="font-size:13px;color:var(--muted)">Sneakers & apparel</div>
+          </div>
+          <div style="background:white;border-radius:10px;padding:12px;border:1px solid rgba(15,23,36,0.04)">
+            <strong>AI Ads</strong><div style="font-size:13px;color:var(--muted)">Automated campaigns</div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=900&q=80" alt="About NEUadvert image">
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section id="features">
+      <h2 class="center" style="margin:6px 0">Why NEUadvert</h2>
+      <p class="center muted" style="margin:0 0 18px">Everything built to be reusable, fast and measurable.</p>
+
+      <div class="features-grid">
+        <div class="feature">
+          <h4>Modular Creative</h4>
+          <p class="muted">Reusable blocks that speed up production without losing craft.</p>
+        </div>
+
+        <div class="feature">
+          <h4>Transparent Pricing</h4>
+          <p class="muted">Clear plans and delivery timelines so you're never surprised.</p>
+        </div>
+
+        <div class="feature">
+          <h4>Local Roots, Global Reach</h4>
+          <p class="muted">Inspired by KwaZulu-Natal, built to scale beyond borders.</p>
+        </div>
+
+        <div class="feature">
+          <h4>Fast Deployments</h4>
+          <p class="muted">Landing pages and campaigns ready in days — not weeks.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <h2 style="margin:6px 0 12px">Get in touch</h2>
+
+      <div class="contact-wrap">
+        <div class="contact-card">
+          <h3>Let's work together</h3>
+          <p class="muted">Email: <a href="mailto:
